@@ -4,7 +4,7 @@
 
 **Please do not open a public GitHub issue for security vulnerabilities.**
 
-Email **`security@brethof.ai`** with:
+Email **`hello@brethof.ai`** with:
 
 - A clear description of the issue.
 - Affected version(s) of Brethof Voice Pro.

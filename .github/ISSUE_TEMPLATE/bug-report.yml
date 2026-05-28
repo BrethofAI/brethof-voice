@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Thanks for reporting a bug. The more specific you are, the faster we can fix it.
-        **Do not include audio recordings with private content in this public issue.** If the bug only reproduces with sensitive audio, mark it and email `support@brethof.ai`.
+        **Do not include audio recordings with private content in this public issue.** If the bug only reproduces with sensitive audio, mark it and email `hello@brethof.ai`.
 
   - type: input
     id: version

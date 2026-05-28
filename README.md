@@ -96,7 +96,7 @@ ASR and translation lists don't perfectly overlap (ASR has Danish, Greek, Finnis
 
 Please use the [bug report template](https://github.com/BrethofAI/brethof-voice/issues/new?template=bug-report.yml). It asks for OS + version + repro + the log excerpt (the app's Help menu has a "Show log location" — paste the relevant lines).
 
-**Do not include audio recordings with private content in this public issue.** If a bug only reproduces with sensitive audio, mark it as such and email `support@brethof.ai`.
+**Do not include audio recordings with private content in this public issue.** If a bug only reproduces with sensitive audio, mark it as such and email `hello@brethof.ai`.
 
 ## Reporting a security issue
 

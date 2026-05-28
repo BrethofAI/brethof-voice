@@ -10,5 +10,5 @@ contact_links:
     url: https://github.com/BrethofAI/brethof-voice/blob/main/SECURITY.md
     about: Do NOT open a public issue for security problems. Follow the responsible-disclosure process in SECURITY.md.
   - name: 💌 Email support
-    url: mailto:support@brethof.ai
+    url: mailto:hello@brethof.ai
     about: For Pro licence questions, billing, or anything you can't put on a public tracker.

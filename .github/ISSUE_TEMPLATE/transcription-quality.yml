@@ -8,7 +8,7 @@ body:
       value: |
         We track transcription-quality issues by language + setup. Please be specific — "language X is bad" is hard to act on, but "this exact word gets transcribed as Y consistently when I use mic input + auto-detect" is actionable.
 
-        **DO NOT include audio recordings with private content in this public issue.** If your example is sensitive, email `support@brethof.ai` instead.
+        **DO NOT include audio recordings with private content in this public issue.** If your example is sensitive, email `hello@brethof.ai` instead.
 
   - type: input
     id: version
