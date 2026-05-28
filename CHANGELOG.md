@@ -58,15 +58,24 @@ Full launch article: [The local voice stack that beats the cloud at its own benc
 - **DeepFilter noise reduction** included but **off by default** —
   hurts quality on short clean clips, available for noisy rooms.
 
-### Performance receipts
+### Performance receipts (engineering measurables)
 
-- Qwen3-ASR base: **1.84% average WER** across 10-language test;
-  **4.5% on English** (Whisper Large-v3: 7.4%).
-- Language identification: **97.9%** accurate across 30 languages
-  (Whisper Large-v3: 94.1%).
-- Voice-LoRA on ~11h Polish (small 0.6B model): **6.10% WER**, beating
-  Whisper Large-v3's 8.40% on the same audio.
-- Translation: Fast tier sub-second on CPU; Quality tier sub-second on GPU.
+- **Install size:** 83 MB on Windows / 161 MB on Linux — one binary, no
+  runtime to install separately.
+- **Cold start:** ~400 ms — weights are memory-mapped, so the first
+  hotkey press after a reboot is already listening.
+- **Transcription throughput:** 5–7× faster than Whisper Large-v3 on
+  the same hardware (Whisper used as baseline because every guide on
+  the internet measures against it).
+- **Translation latency:** Fast tier (1.8B) sub-second on CPU; Quality
+  tier (7B) sub-second on GPU.
+
+WER and language-identification accuracy figures quoted elsewhere in
+launch materials reflect **fine-tuned and/or training-set evaluations,
+not held-out benchmarks** — useful as upper bounds, not as the
+generalisation accuracy you'll see on your own audio. Run your own
+benchmark on your own speakers / language / domain — that's exactly
+what the 14-day free trial is for.
 
 ### Removed
 
