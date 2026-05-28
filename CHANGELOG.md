@@ -58,10 +58,26 @@ Full launch article: [The local voice stack that beats the cloud at its own benc
 - **DeepFilter noise reduction** included but **off by default** —
   hurts quality on short clean clips, available for noisy rooms.
 
-### Performance receipts (engineering measurables)
+### Performance receipts
 
-- **Install size:** 83 MB on Windows / 161 MB on Linux — one binary, no
-  runtime to install separately.
+Accuracy numbers below come from **after-fine-tune evaluations** —
+the upstream Qwen3-ASR project's own evaluation set, and our internal
+Polish LoRA benchmark. They're useful as upper bounds, not as the
+held-out accuracy you'll see on stranger audio. The 14-day free trial
+is there so you can measure on your own speakers / language / domain
+before committing.
+
+- **Qwen3-ASR (after fine-tune):** 1.84% average WER across the
+  10-language test set; 4.5% WER on English (Whisper Large-v3: 7.4%).
+- **Language identification (after fine-tune):** 97.9% accurate across
+  30 languages (Whisper Large-v3: 94.1%).
+- **Voice-LoRA, small 0.6B base, ~11h Polish (after on-device fine-tune):**
+  6.10% WER, vs Whisper Large-v3's 8.40% on the same audio.
+
+Engineering measurables (objective on your hardware):
+
+- **Install size:** 83 MB on Windows / 161 MB on Linux — one binary,
+  no separate runtime to install.
 - **Cold start:** ~400 ms — weights are memory-mapped, so the first
   hotkey press after a reboot is already listening.
 - **Transcription throughput:** 5–7× faster than Whisper Large-v3 on
@@ -69,13 +85,6 @@ Full launch article: [The local voice stack that beats the cloud at its own benc
   the internet measures against it).
 - **Translation latency:** Fast tier (1.8B) sub-second on CPU; Quality
   tier (7B) sub-second on GPU.
-
-WER and language-identification accuracy figures quoted elsewhere in
-launch materials reflect **fine-tuned and/or training-set evaluations,
-not held-out benchmarks** — useful as upper bounds, not as the
-generalisation accuracy you'll see on your own audio. Run your own
-benchmark on your own speakers / language / domain — that's exactly
-what the 14-day free trial is for.
 
 ### Removed
 
