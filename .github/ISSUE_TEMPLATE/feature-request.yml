@@ -14,7 +14,7 @@ body:
       label: What problem does this solve?
       description: Describe the situation or workflow that's currently painful or impossible. Be specific.
       placeholder: |
-        "When I'm in a meeting and need to switch between English and Polish, I have to manually change the language each time, which interrupts the flow."
+        "I'm in meetings where speakers switch between English and Polish mid-sentence. The current single-language transcription splits them awkwardly — I'd like a multi-language mode that detects the switch in-stream."
     validations:
       required: true
 
@@ -22,7 +22,7 @@ body:
     id: proposed
     attributes:
       label: What would you like to see?
-      description: Describe the feature. Don't worry about implementation — focus on the user experience.
+      description: Describe the feature. Focus on the user experience; don't worry about implementation.
     validations:
       required: true
 
@@ -33,20 +33,19 @@ body:
       description: Workarounds you currently use, or other tools that solve this differently.
 
   - type: dropdown
-    id: tier_relevance
+    id: area
     attributes:
-      label: Which tier should have this?
+      label: Which part of Voice Pro is this about?
       options:
-        - Free + Pro (everyone)
-        - Pro only (it's a power-user feature)
-        - Pro only (it has a real cost — compute, storage, support)
-        - Not sure
+        - Transcription (file / mic / system audio)
+        - Translation (38-language)
+        - Voice keyboard (push-to-talk dictation)
+        - LoRA fine-tune (personal-voice adapter)
+        - MCP server (--mcp tools)
+        - Hotwords / vocabulary biasing
+        - Subtitles (SRT / VTT)
+        - Settings / preferences
+        - Installer / first-run experience
+        - Other (describe below)
     validations:
       required: true
-
-  - type: input
-    id: would-you-pay
-    attributes:
-      label: Would you pay for this as a Pro feature?
-      description: Honest answer helps us prioritise. "No" is a valid answer.
-      placeholder: "yes / no / maybe"

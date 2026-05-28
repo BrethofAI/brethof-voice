@@ -23,8 +23,8 @@ body:
     attributes:
       label: Operating system
       options:
-        - Linux (specify distro below)
-        - Windows 10
+        - Linux x86_64 (specify distro below)
+        - Windows 10 (21H2+)
         - Windows 11
         - Other / not listed
     validations:
@@ -33,29 +33,44 @@ body:
   - type: input
     id: distro
     attributes:
-      label: Distro + version (Linux only)
-      placeholder: "e.g. CachyOS / Fedora 43 / Ubuntu 26.04"
+      label: Linux distro + display server (Linux only)
+      placeholder: "e.g. CachyOS / Wayland, or Ubuntu 24.04 / X11"
 
   - type: dropdown
-    id: install_method
+    id: install_form
     attributes:
-      label: Install method
+      label: How Voice Pro is installed
+      description: "Linux ships as a single portable binary (no install); Windows ships as a per-user graphical installer."
       options:
-        - AppImage (Linux)
-        - .deb package (Linux)
-        - .rpm package (Linux)
-        - Windows installer (.exe)
-        - Built from packaged binary another way (specify)
+        - Linux — portable binary
+        - Windows — graphical installer
+        - Other (specify in description)
     validations:
       required: true
 
   - type: dropdown
-    id: tier
+    id: licence
     attributes:
-      label: Tier
+      label: Licence state
       options:
-        - Free
-        - Pro
+        - Free trial (14 days)
+        - Trial expired
+        - Purchased (full licence)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: backend
+    attributes:
+      label: Compute backend in use
+      description: "Settings → Engine → Device. If you're not sure, leave it on the default."
+      options:
+        - CPU only
+        - NVIDIA (Vulkan)
+        - NVIDIA (CUDA — for LoRA training)
+        - AMD (Vulkan)
+        - Intel Arc (Vulkan)
+        - Other (describe below)
     validations:
       required: true
 
@@ -63,13 +78,14 @@ body:
     id: what-happened
     attributes:
       label: What happened?
-      description: Step-by-step what you did + what you saw. The more concrete, the better.
+      description: Step-by-step what you did + what you saw.
       placeholder: |
-        1. Pressed hotkey Ctrl+Shift+Space.
-        2. Said "test test test".
-        3. Released hotkey.
-        4. Expected: transcription "test test test" at cursor.
-        5. Actual: nothing appeared / application crashed / wrong text.
+        1. Opened Transcribe popup.
+        2. Dropped recording.mp3 onto the file area.
+        3. Selected "Translate to: Polish".
+        4. Clicked Transcribe.
+        5. Expected: Polish transcript + SRT.
+        6. Actual: empty output / application crashed / wrong text.
     validations:
       required: true
 
@@ -85,33 +101,22 @@ body:
     attributes:
       label: Log excerpt (last ~50 lines of the failing session)
       description: |
-        Linux: `~/.config/brethof-voice/log/latest.log`
-        Windows: `%APPDATA%\brethof-voice\log\latest.log`
-        Paste relevant lines below. If you're not sure what's relevant, paste the last 50 lines.
+        Help menu → "Show log location" (or check the app's About/Diagnostics screen).
+        Paste the relevant lines below. If you're not sure what's relevant, paste the last 50 lines.
       render: text
 
   - type: input
-    id: audio
+    id: audio_device
     attributes:
       label: Audio source / device
-      description: e.g. built-in laptop mic, USB headset model, Bluetooth headset model
+      description: e.g. built-in laptop mic, USB headset model, "system audio" capture
       placeholder: "e.g. Logitech H390 USB"
 
-  - type: dropdown
+  - type: input
     id: language
     attributes:
-      label: Language being transcribed
-      options:
-        - English
-        - Polish
-        - German
-        - French
-        - Spanish
-        - Italian
-        - Portuguese
-        - Russian
-        - Czech / Slovak
-        - Other (specify in description)
+      label: Language being transcribed (or "auto-detect")
+      placeholder: "e.g. English / Polish / auto-detect"
 
   - type: textarea
     id: additional

@@ -1,0 +1,86 @@
+name: 🧠 LoRA fine-tune (personal voice adapter) — help / issue
+description: Help with the on-device LoRA fine-tune that adapts the ASR model to your voice + corrections
+title: "[LoRA] "
+labels: ["lora", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Voice Pro's LoRA fine-tune adapts the base ASR model to your own voice and corrections — every time you correct a misheard word, the audio-and-correction pair goes into a local dataset, and one-click LoRA training produces a personal GGUF model you can switch to from the main screen. This is **NOT voice cloning** (TTS); it's improving the speech-to-text on YOUR speech.
+
+        Be specific — generic "training fails" without context is hard to act on.
+
+  - type: input
+    id: version
+    attributes:
+      label: Brethof Voice Pro version
+      placeholder: "2.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: backend
+    attributes:
+      label: Training compute (auto-selected by Voice Pro)
+      options:
+        - NVIDIA CUDA (auto-selected when an NVIDIA GPU is present)
+        - CPU (selected when no NVIDIA GPU detected)
+        - I'm not sure what it picked — check Settings → Engine → Training device
+    validations:
+      required: true
+
+  - type: input
+    id: gpu_model
+    attributes:
+      label: GPU model (if NVIDIA CUDA was used)
+      placeholder: "e.g. RTX 5090 / RTX 4080 / RTX 3060"
+
+  - type: input
+    id: samples
+    attributes:
+      label: Sample count + duration in dataset
+      description: "Main window shows the sample count. The audio duration is rough — Voice Pro doesn't display it directly, but you can estimate."
+      placeholder: "e.g. 420 corrected samples, ~3.5 hours"
+
+  - type: input
+    id: language
+    attributes:
+      label: Language(s) being adapted
+      placeholder: "e.g. Polish, or Polish + English"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: What kind of issue?
+      options:
+        - Training crashes / fails to start
+        - Training completes but the personal model performs WORSE than the base
+        - Training completes but accuracy didn't improve enough
+        - Personal model is great in language A but worse in language B
+        - Out-of-memory error during training
+        - Sample count isn't growing when I correct misheard words
+        - Personal-model GGUF export failed / can't switch to it
+        - I'm not sure how to start (please link the docs page that confused you)
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: |
+        - What were you hoping the personal model would do better?
+        - What does the post-training transcription still get wrong (with examples — but DO NOT include sensitive audio)?
+        - Any errors during training (paste from log)?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Training log excerpt
+      description: Paste the last ~80 lines from the training log. Help → Show log location.
+      render: text

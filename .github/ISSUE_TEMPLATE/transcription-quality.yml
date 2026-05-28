@@ -1,12 +1,12 @@
 name: 🎯 Transcription quality issue
-description: "Specific accuracy problem: a word/phrase/language that's consistently wrong"
+description: "Specific accuracy problem: a word/phrase/language consistently transcribed wrong"
 title: "[Quality] "
 labels: ["transcription-quality", "triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        We track transcription-quality issues by language + model tier. Please be specific — "it's bad in language X" without an example is hard to act on, but "it consistently transcribes the word X as Y when I'm using model tier Z" is actionable.
+        We track transcription-quality issues by language + setup. Please be specific — "language X is bad" is hard to act on, but "this exact word gets transcribed as Y consistently when I use mic input + auto-detect" is actionable.
 
         **DO NOT include audio recordings with private content in this public issue.** If your example is sensitive, email `support@brethof.ai` instead.
 
@@ -22,10 +22,9 @@ body:
     id: language
     attributes:
       label: Language being transcribed
+      description: "Pick the language you selected in Voice Pro (or 'auto-detect' if you let the model pick)."
       options:
-        - English (US)
-        - English (UK)
-        - English (other)
+        - English
         - Polish
         - German
         - French
@@ -36,22 +35,54 @@ body:
         - Czech
         - Slovak
         - Hungarian
+        - Chinese (Mandarin)
+        - Chinese (other dialect — specify below)
+        - Japanese
+        - Korean
+        - auto-detect
         - Other (specify below)
     validations:
       required: true
 
   - type: dropdown
-    id: model_tier
+    id: model
     attributes:
-      label: Model tier in use
+      label: Which ASR model are you running?
+      description: Settings → Engine → Model. If you have a personal LoRA active, pick that.
       options:
-        - Free (default)
-        - Pro - Standard
-        - Pro - Large
-        - Pro - XL (Pro only)
-        - Custom LoRA on top of base
+        - Base Qwen3-ASR (default)
+        - Personal LoRA fine-tune
+        - Other / not sure
     validations:
       required: true
+
+  - type: dropdown
+    id: input
+    attributes:
+      label: Audio source
+      options:
+        - File (drag-and-drop)
+        - Microphone (Transcribe popup)
+        - Microphone (Voice keyboard)
+        - System audio
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: features
+    attributes:
+      label: Features in use
+      options:
+        - label: Noise reduction (DeepFilter) ON
+        - label: Hotwords list populated
+        - label: Forced Aligner (word-level timestamps)
+        - label: Translation enabled (specify target language below)
+
+  - type: input
+    id: hotwords_count
+    attributes:
+      label: Number of entries in your Hotwords list
+      placeholder: "e.g. 12"
 
   - type: textarea
     id: examples
@@ -67,7 +98,7 @@ body:
 
         Said:           "Brethof Voice Pro"
         Transcribed:    "Breath of voice pro"
-        Expected:       "Brethof Voice Pro" (a proper noun)
+        Expected:       "Brethof Voice Pro" (proper noun — added to Hotwords already, still wrong)
     validations:
       required: true
 
@@ -86,4 +117,4 @@ body:
     id: context
     attributes:
       label: Additional context
-      description: Anything else — domain (medical, legal, technical jargon), accent, ambient noise, microphone setup, etc.
+      description: Domain (medical / legal / technical jargon), accent, ambient noise, microphone setup, etc.
