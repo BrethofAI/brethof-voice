@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 General questions
+    url: https://github.com/BrethofAI/brethof-voice/discussions
+    about: For "how do I…?" or general usage questions, please use Discussions instead of Issues.
+  - name: 📖 Documentation
+    url: https://brethof.ai/voice/docs/
+    about: Read the docs on brethof.ai before opening an issue — your question may already be answered.
+  - name: 🔒 Security issue
+    url: https://github.com/BrethofAI/brethof-voice/blob/main/SECURITY.md
+    about: Do NOT open a public issue for security problems. Follow the responsible-disclosure process in SECURITY.md.
+  - name: 💌 Email support
+    url: mailto:support@brethof.ai
+    about: For Pro licence questions, billing, or anything you can't put on a public tracker.

@@ -1,0 +1,120 @@
+name: 🐛 Bug Report
+description: Report a problem with Brethof Voice Pro
+title: "[Bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. The more specific you are, the faster we can fix it.
+        **Do not include audio recordings with private content in this public issue.** If the bug only reproduces with sensitive audio, mark it and email `support@brethof.ai`.
+
+  - type: input
+    id: version
+    attributes:
+      label: Brethof Voice Pro version
+      description: "Help → About → Copy version (e.g. 2.0.0)"
+      placeholder: "2.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Linux (specify distro below)
+        - Windows 10
+        - Windows 11
+        - Other / not listed
+    validations:
+      required: true
+
+  - type: input
+    id: distro
+    attributes:
+      label: Distro + version (Linux only)
+      placeholder: "e.g. CachyOS / Fedora 43 / Ubuntu 26.04"
+
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: Install method
+      options:
+        - AppImage (Linux)
+        - .deb package (Linux)
+        - .rpm package (Linux)
+        - Windows installer (.exe)
+        - Built from packaged binary another way (specify)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Tier
+      options:
+        - Free
+        - Pro
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Step-by-step what you did + what you saw. The more concrete, the better.
+      placeholder: |
+        1. Pressed hotkey Ctrl+Shift+Space.
+        2. Said "test test test".
+        3. Released hotkey.
+        4. Expected: transcription "test test test" at cursor.
+        5. Actual: nothing appeared / application crashed / wrong text.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log excerpt (last ~50 lines of the failing session)
+      description: |
+        Linux: `~/.config/brethof-voice/log/latest.log`
+        Windows: `%APPDATA%\brethof-voice\log\latest.log`
+        Paste relevant lines below. If you're not sure what's relevant, paste the last 50 lines.
+      render: text
+
+  - type: input
+    id: audio
+    attributes:
+      label: Audio source / device
+      description: e.g. built-in laptop mic, USB headset model, Bluetooth headset model
+      placeholder: "e.g. Logitech H390 USB"
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language being transcribed
+      options:
+        - English
+        - Polish
+        - German
+        - French
+        - Spanish
+        - Italian
+        - Portuguese
+        - Russian
+        - Czech / Slovak
+        - Other (specify in description)
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else?
+      description: Screenshots, related issues, hunches, things you tried.

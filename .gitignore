@@ -1,0 +1,30 @@
+# Defensive — no secrets / .env / OS junk ever in this public repo.
+.env
+.env.*
+*.secret
+*.key
+*.pem
+
+.DS_Store
+Thumbs.db
+
+# Editor leftovers
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python (in case anyone ever drops a script here)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (same — defensive)
+node_modules/
+
+# Local notes that shouldn't be public
+NOTES.md
+DRAFT-*.md
+.scratch/

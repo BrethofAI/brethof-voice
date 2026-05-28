@@ -1,0 +1,89 @@
+name: 🎯 Transcription quality issue
+description: "Specific accuracy problem: a word/phrase/language that's consistently wrong"
+title: "[Quality] "
+labels: ["transcription-quality", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We track transcription-quality issues by language + model tier. Please be specific — "it's bad in language X" without an example is hard to act on, but "it consistently transcribes the word X as Y when I'm using model tier Z" is actionable.
+
+        **DO NOT include audio recordings with private content in this public issue.** If your example is sensitive, email `support@brethof.ai` instead.
+
+  - type: input
+    id: version
+    attributes:
+      label: Brethof Voice Pro version
+      placeholder: "2.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language being transcribed
+      options:
+        - English (US)
+        - English (UK)
+        - English (other)
+        - Polish
+        - German
+        - French
+        - Spanish
+        - Italian
+        - Portuguese
+        - Russian
+        - Czech
+        - Slovak
+        - Hungarian
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: model_tier
+    attributes:
+      label: Model tier in use
+      options:
+        - Free (default)
+        - Pro - Standard
+        - Pro - Large
+        - Pro - XL (Pro only)
+        - Custom LoRA on top of base
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Concrete examples
+      description: |
+        Format: "I said X" / "It transcribed Y" / "Expected Z"
+        Multiple examples are very helpful. **Do not paste sensitive content.**
+      placeholder: |
+        Said:           "I want to send a transcription to the lawyer."
+        Transcribed:    "I want to send a transcription to the law year."
+        Expected:       "I want to send a transcription to the lawyer."
+
+        Said:           "Brethof Voice Pro"
+        Transcribed:    "Breath of voice pro"
+        Expected:       "Brethof Voice Pro" (a proper noun)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: pattern
+    attributes:
+      label: Is the error consistent or sporadic?
+      options:
+        - Consistent — same wrong output every time
+        - Sporadic — sometimes right, sometimes wrong
+        - Only with this specific speaker / accent
+        - Only with background noise
+        - Other (describe below)
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else — domain (medical, legal, technical jargon), accent, ambient noise, microphone setup, etc.
