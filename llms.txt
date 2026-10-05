@@ -1,0 +1,13 @@
+# Brethof Voice Pro
+
+> Offline desktop application for voice-to-text transcription and 38-language translation that runs entirely on local hardware without cloud connectivity.
+
+Supports Linux x86_64 and Windows x64 via a portable binary or per-user installer. Features include file and microphone transcription, a voice keyboard, and LoRA fine-tuning for personal voice adaptation. The repository serves as a public issue tracker and documentation hub for this closed-source product.
+
+## Docs
+
+- [Brethof Voice Pro](https://raw.githubusercontent.com/BrethofAI/brethof-voice/main/README.md): Issue tracker, documentation hub, installation instructions, and links for the closed-source offline voice-to-text application.
+
+## Optional
+
+- [Changelog](https://raw.githubusercontent.com/BrethofAI/brethof-voice/main/CHANGELOG.md): Version history detailing the 2.0.0 release, including offline translation, MCP server mode, and engine rebuilds.
